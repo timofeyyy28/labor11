@@ -183,6 +183,7 @@ namespace Laba11
             Console.WriteLine("___________");
             testCollections.SearchElementNotInCollection();
             Console.WriteLine("1231234123213213");
+            Console.WriteLine("234234234234");
 
         }
     }
