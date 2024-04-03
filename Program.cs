@@ -83,15 +83,16 @@ namespace Laba11
             {
                 Console.WriteLine(item.ToString());
             }
-
-            // Сортировка очереди   
+            // Копируем элементы очереди в массив
             var array = queue.ToArray();
+
+            // Сортируем массив
             Array.Sort(array);
 
             // Очищаем исходную очередь
             queue.Clear();
 
-
+            // Перезаписываем элементы очереди после сортировки
             foreach (var item in array)
             {
                 queue.Enqueue(item);
@@ -102,6 +103,7 @@ namespace Laba11
             {
                 Console.WriteLine(item.ToString());
             }
+
             Console.WriteLine("Часть 2");
             // Часть 2
             SortedSet<Musicalinstrument> sortedSet = new SortedSet<Musicalinstrument>();
