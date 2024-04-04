@@ -41,6 +41,7 @@ namespace Laba11
                     countGuitars++;
                 }
             }
+            Console.WriteLine($"Количество гитар в очереди: {countGuitars}");
             //печать элементов опр вида
             foreach (object item in queue)
             {
@@ -49,7 +50,7 @@ namespace Laba11
                     Console.WriteLine(guitar.ToString());
                 }
             }
-            Console.WriteLine($"Количество гитар в очереди: {countGuitars}");
+           
             //поиск элемента в очереди
             Console.WriteLine("Введите элемент для поиска");
             Musicalinstrument mi2 = new Musicalinstrument();
@@ -68,6 +69,7 @@ namespace Laba11
             Console.WriteLine("Удаление первого элемента из очереди");
             queue.Dequeue();
             Console.WriteLine("Первый элемент удален");
+
             Console.WriteLine($"Count={queue.Count}");
 
 
@@ -76,6 +78,7 @@ namespace Laba11
             {
                 Console.WriteLine(item.ToString());
             }
+            Console.WriteLine($"Count={queue.Count}");
 
 
             Console.WriteLine("Добавление элемента в конец очереди");
@@ -102,10 +105,8 @@ namespace Laba11
             }
             //копирование элементов очереди в массив
             var array = queue.ToArray();
-
-            
+           
             Array.Sort(array);
-
             
             queue.Clear();
 
