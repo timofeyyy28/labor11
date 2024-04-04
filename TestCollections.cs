@@ -111,13 +111,13 @@ namespace Laba11
         }
         public void Get1TimeQueue1()
         {
-            // Получение первого элемента (последнего добавленного элемента)
+            //получение первого элемента (последнего добавленного элемента)
             Musicalinstrument firstElement = queue1.Peek();
 
-            // Получение последнего элемента (первого добавленного элемента)
+            //получение последнего элемента (первого добавленного элемента)
             Musicalinstrument lastElement = queue1.ToArray()[0];
 
-            // Получение центрального элемента
+            //получение центрального элемента
             Musicalinstrument centralElement = queue1.ToArray()[queue1.Count / 2];
 
             Console.WriteLine("Время поиска (среднее за 1000 замеров) в очереди 1:");
@@ -128,13 +128,13 @@ namespace Laba11
 
         public void Get1TimeQueue2()
         {
-            // Получение первого элемента (последнего добавленного элемента)
+            //получение первого элемента (последнего добавленного элемента)
             string firstElement = queue2.Peek();
 
-            // Получение последнего элемента (первого добавленного элемента)
+            //получение последнего элемента (первого добавленного элемента)
             string lastElement = queue2.ToArray()[0];
 
-            // Получение центрального элемента
+            //получение центрального элемента
             string centralElement = queue2.ToArray()[queue2.Count / 2];
 
             Console.WriteLine("Время поиска (среднее за 1000 замеров) в очереди 2:");
@@ -145,13 +145,13 @@ namespace Laba11
 
         public void Get1TimeSortedSet1()
         {
-            // Получение первого элемента (наименьшего элемента в отсортированном множестве)
+            //получение первого элемента (наименьшего элемента в отсортированном множестве)
             Musicalinstrument firstElement = sortedset1.Min;
 
-            // Получение последнего элемента (наибольшего элемента в отсортированном множестве)
+            //получение последнего элемента (наибольшего элемента в отсортированном множестве)
             Musicalinstrument lastElement = sortedset1.Max;
 
-            // Получение центрального элемента
+            //получение центрального элемента
             int count = sortedset1.Count;
             Musicalinstrument centralElement = sortedset1.Skip(count / 2).FirstOrDefault();
 
@@ -163,13 +163,13 @@ namespace Laba11
 
         public void Get1TimeSortedSet2()
         {
-            // Получение первого элемента (наименьшего элемента в отсортированном множестве)
+            //получение первого элемента (наименьшего элемента в отсортированном множестве)
             string firstElement = sortedset2.Min;
 
-            // Получение последнего элемента (наибольшего элемента в отсортированном множестве)
+            //получение последнего элемента (наибольшего элемента в отсортированном множестве)
             string lastElement = sortedset2.Max;
 
-            // Получение центрального элемента
+            //получение центрального элемента
             int count = sortedset2.Count;
             string centralElement = sortedset2.Skip(count / 2).FirstOrDefault();
 
@@ -181,10 +181,10 @@ namespace Laba11
         }
         public void SearchElementNotInCollection()
         {
-            // Создание элемента, который не входит в коллекцию
+            //создание элемента, который не входит в коллекцию
             Musicalinstrument elementNotInCollection = new Musicalinstrument("элемент вне коллекции", 99999);
 
-            // Поиск элемента, который не входит в коллекцию
+            //поиск элемента, который не входит в коллекцию
             bool foundInQueue1 = this.queue1.Contains(elementNotInCollection);
             bool foundInQueue2 = this.queue2.Contains(elementNotInCollection.ToString());
             bool foundInSortedSet1 = this.sortedset1.Contains(elementNotInCollection);
