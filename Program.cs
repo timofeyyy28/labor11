@@ -17,7 +17,7 @@ namespace Laba11
             Queue queue = new Queue();
             for (int i = 0; i < 5; i++)
             {
-                Musicalinstrument mi1 = new Musicalinstrument();
+                Musicalinstrument mi1 = new Musicalinstrument(); 
                 queue.Enqueue(mi1);
                 mi1.RandomInit();
             }
@@ -32,8 +32,25 @@ namespace Laba11
                 Console.WriteLine(mi1.ToString());
             }
             Console.WriteLine($"Count={queue.Count}");
-
-            // Поиск элемента в очереди
+            //количество гитар в очереди
+            int countGuitars = 0;
+            foreach (object item in queue)
+            {
+                if (item is Guitar)
+                {
+                    countGuitars++;
+                }
+            }
+            //печать элементов опр вида
+            foreach (object item in queue)
+            {
+                if (item is Guitar guitar)
+                {
+                    Console.WriteLine(guitar.ToString());
+                }
+            }
+            Console.WriteLine($"Количество гитар в очереди: {countGuitars}");
+            //поиск элемента в очереди
             Console.WriteLine("Введите элемент для поиска");
             Musicalinstrument mi2 = new Musicalinstrument();
             mi2.Init();
@@ -75,7 +92,7 @@ namespace Laba11
             }
             Console.WriteLine($"Count={queue.Count}");
 
-            // Клонирование очереди с помощью ToArray
+            //к6лонирование очереди с помощью ToArray
             Queue clonedQueue = new Queue(queue.ToArray());
 
             Console.WriteLine("Склонированная очередь:");
@@ -83,16 +100,16 @@ namespace Laba11
             {
                 Console.WriteLine(item.ToString());
             }
-            // Копируем элементы очереди в массив
+            //копирование элементов очереди в массив
             var array = queue.ToArray();
 
-            // Сортируем массив
+            
             Array.Sort(array);
 
-            // Очищаем исходную очередь
+            
             queue.Clear();
 
-            // Перезаписываем элементы очереди после сортировки
+            //перезаписывание элементов очереди после сортировки
             foreach (var item in array)
             {
                 queue.Enqueue(item);
@@ -127,7 +144,25 @@ namespace Laba11
                 Console.WriteLine(item.ToString());
             }
             Console.WriteLine($"Count={sortedSet.Count}");
-
+            //колво гитар в отсортированном множестве
+            int countGuitars1 = 0;
+            foreach (Musicalinstrument item in sortedSet)
+            {
+                if (item is Guitar)
+                {
+                    countGuitars1++;
+                }
+            }
+            Console.WriteLine($"Количество гитар в множестве: {countGuitars1}");
+            //пчеать элементов опр вида
+            foreach (Musicalinstrument item in sortedSet)
+            {
+                if (item is Guitar guitar)
+                {
+                    Console.WriteLine(guitar.ToString());
+                }
+            }
+           
 
             Console.WriteLine("Введите элемент для поиска:");
             Musicalinstrument mi4 = new Musicalinstrument();
@@ -142,14 +177,29 @@ namespace Laba11
                 Console.WriteLine("Элемент не найден");
             }
 
-            // Удаление первого элемента из множества
-            Console.WriteLine("Удаление первого элемента из множества");
-            sortedSet.Remove(sortedSet.Min);
-            // Удаление первого элемента из множества
-            Console.WriteLine("Удаление последнего элемента из множества");
-            sortedSet.Remove(sortedSet.Max);
+            // удаление первого элемента из множества
+            if (sortedSet.Count > 0)
+            {
+                var minElement = sortedSet.Min;
+                sortedSet.Remove(minElement);
+                Console.WriteLine($"Удален элемент: {minElement}");
+            }
+            else
+            {
+                Console.WriteLine("Множество пусто, удаление невозможно.");
+            }
 
-            Console.WriteLine("Первый элемент удален");
+            // удаление последнего элемента из множества
+            if (sortedSet.Count > 0)
+            {
+                var maxElement = sortedSet.Max;
+                sortedSet.Remove(maxElement);
+                Console.WriteLine($"Удален элемент: {maxElement}");
+            }
+            else
+            {
+                Console.WriteLine("Множество пусто, удаление невозможно.");
+            }
             Console.WriteLine($"Count={sortedSet.Count}");
 
 
