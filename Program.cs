@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
+using System.Dynamic;     
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +50,17 @@ namespace Laba11
                     Console.WriteLine(guitar.ToString());
                 }
             }
-           
+            Console.WriteLine("Инструменты с чётным ID:");
+            //печать элементов с четным id
+            foreach (var item in queue)
+            {
+                
+                if (item is Musicalinstrument mi && mi.id.number % 2 == 0)
+                {
+                    Console.WriteLine(mi.ToString());
+                }
+            }
+
             //поиск элемента в очереди
             Console.WriteLine("Введите элемент для поиска");
             Musicalinstrument mi2 = new Musicalinstrument();
@@ -66,12 +76,17 @@ namespace Laba11
             }
 
 
+            //удаление первого элемента из очереди
             Console.WriteLine("Удаление первого элемента из очереди");
-            queue.Dequeue();
-            Console.WriteLine("Первый элемент удален");
-
-            Console.WriteLine($"Count={queue.Count}");
-
+            if (queue.Count > 0)
+            {
+                queue.Dequeue();
+                Console.WriteLine("Первый элемент удален");
+            }
+            else
+            {
+                Console.WriteLine("Очередь пуста, удаление невозможно.");
+            }
 
             Console.WriteLine("Очередь после удаления элемента:");
             foreach (object item in queue)
@@ -163,7 +178,16 @@ namespace Laba11
                     Console.WriteLine(guitar.ToString());
                 }
             }
-           
+            Console.WriteLine("Инструменты с чётным ID:");
+            foreach (var item in sortedSet)
+            {
+                // Проверяем, является ли элемент инструментом
+                if (item is Musicalinstrument mi && mi.id.number % 2 == 0)
+                {
+                    Console.WriteLine(mi.ToString());
+                }
+            }
+
 
             Console.WriteLine("Введите элемент для поиска:");
             Musicalinstrument mi4 = new Musicalinstrument();
