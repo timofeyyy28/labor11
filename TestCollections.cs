@@ -7,7 +7,9 @@ using System.Runtime.Serialization.Formatters;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-
+//теперь происходит поиск непосредственно самих элементов,а не ссылок
+//лишние peek и firstordefault убраны
+//теперь время поиска корректно
 namespace Laba11
 {
     internal class TestCollections
@@ -50,7 +52,7 @@ namespace Laba11
                 bool found = false;
                 foreach (var item in queue1)
                 {
-                    if (item.Equals(element))
+                    if (item.Name == element.Name && item.id.number == element.id.number)
                     {
                         found = true;
                         break;
@@ -71,7 +73,15 @@ namespace Laba11
             for (int i = 0; i < 1000; i++)
             {
                 stopwatch.Restart();
-                this.queue2.Contains(element);
+                bool found = false;
+                foreach (var item in queue2)
+                {
+                    if (item == element)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
                 stopwatch.Stop();
                 totalTicks += stopwatch.ElapsedTicks;
             }
@@ -90,7 +100,7 @@ namespace Laba11
                 bool found = false;
                 foreach (var item in sortedset1)
                 {
-                    if (item.Equals(element))
+                    if (item.Name == element.Name && item.id.number == element.id.number)
                     {
                         found = true;
                         break;
@@ -111,17 +121,26 @@ namespace Laba11
             for (int i = 0; i < 1000; i++)
             {
                 stopwatch.Restart();
-                this.sortedset2.Contains(element);
+                bool found = false;
+                foreach (var item in sortedset2)
+                {
+                    if (item == element)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
                 stopwatch.Stop();
                 totalTicks += stopwatch.ElapsedTicks;
             }
 
             return (double)totalTicks / 1000;
         }
+
         public void Get1TimeQueue1()
         {
             //получение первого элемента (последнего добавленного элемента)
-            Musicalinstrument firstElement = queue1.Peek();
+            Musicalinstrument firstElement = queue1.ToArray()[queue1.Count - 1];
 
             //получение последнего элемента (первого добавленного элемента)
             Musicalinstrument lastElement = queue1.ToArray()[0];
@@ -138,7 +157,7 @@ namespace Laba11
         public void Get1TimeQueue2()
         {
             //получение первого элемента (последнего добавленного элемента)
-            string firstElement = queue2.Peek();
+            string firstElement = queue2.ToArray()[queue2.Count - 1];
 
             //получение последнего элемента (первого добавленного элемента)
             string lastElement = queue2.ToArray()[0];
@@ -162,7 +181,7 @@ namespace Laba11
 
             //получение центрального элемента
             int count = sortedset1.Count;
-            Musicalinstrument centralElement = sortedset1.Skip(count / 2).FirstOrDefault();
+            Musicalinstrument centralElement = sortedset1.ElementAt(count / 2);
 
             Console.WriteLine("Время поиска (среднее за 1000 замеров) в сортированном множестве 1:");
             Console.WriteLine($"Первый найден за {MeasureSearchTimeCollection3(firstElement)} тактов");
@@ -180,13 +199,12 @@ namespace Laba11
 
             //получение центрального элемента
             int count = sortedset2.Count;
-            string centralElement = sortedset2.Skip(count / 2).FirstOrDefault();
+            string centralElement = sortedset2.ElementAt(count / 2);
 
             Console.WriteLine("Время поиска (среднее за 1000 замеров) в сортированном множестве 2:");
             Console.WriteLine($"Первый найден за {MeasureSearchTimeCollection4(firstElement)} тактов");
             Console.WriteLine($"Последний найден за {MeasureSearchTimeCollection4(lastElement)} тактов");
             Console.WriteLine($"Центральный найден за {MeasureSearchTimeCollection4(centralElement)} тактов");
-            
         }
         public void SearchElementNotInCollection()
         {
