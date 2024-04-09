@@ -28,21 +28,14 @@ namespace Laba11
 
             for (int i = 0; i < 1000; i++)
             {
-                try
-                {
-                    Guitar guitar = new Guitar();
-                    guitar.RandomInit();
-                    Musicalinstrument musicalinstrument = new Musicalinstrument(guitar.Name, guitar.id.number);
+                Guitar guitar = new Guitar();
+                guitar.RandomInit();
+                Musicalinstrument musicalinstrument = new Musicalinstrument(guitar.Name, guitar.id.number);
 
-                    queue1.Enqueue(musicalinstrument);
-                    queue2.Enqueue(musicalinstrument.ToString());
-                    sortedset1.Add(musicalinstrument);
-                    sortedset2.Add(musicalinstrument.ToString());
-                }
-                catch (Exception e)
-                {
-                    i--;
-                }
+                queue1.Enqueue(musicalinstrument);
+                queue2.Enqueue(musicalinstrument.ToString());
+                sortedset1.Add(musicalinstrument);
+                sortedset2.Add(musicalinstrument.ToString());
             }
         }
 
@@ -54,7 +47,15 @@ namespace Laba11
             for (int i = 0; i < 1000; i++)
             {
                 stopwatch.Restart();
-                this.queue1.Contains(element);
+                bool found = false;
+                foreach (var item in queue1)
+                {
+                    if (item.Equals(element))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
                 stopwatch.Stop();
                 totalTicks += stopwatch.ElapsedTicks;
             }
@@ -86,7 +87,15 @@ namespace Laba11
             for (int i = 0; i < 1000; i++)
             {
                 stopwatch.Restart();
-                this.sortedset1.Contains(element);
+                bool found = false;
+                foreach (var item in sortedset1)
+                {
+                    if (item.Equals(element))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
                 stopwatch.Stop();
                 totalTicks += stopwatch.ElapsedTicks;
             }
