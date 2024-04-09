@@ -3,10 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.Serialization.Formatters;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 //теперь происходит поиск непосредственно самих элементов,а не ссылок
 //лишние peek и firstordefault убраны
 //теперь время поиска корректно
