@@ -120,9 +120,10 @@ namespace Laba11
 
         public void Get1TimeQueue1()
         {
-            Musicalinstrument firstElement = queue1.ToArray()[queue1.Count - 1];
-            Musicalinstrument lastElement = queue1.ToArray()[0];
-            Musicalinstrument centralElement = queue1.ToArray()[queue1.Count / 2];
+            Musicalinstrument[] array = queue1.ToArray();
+            Musicalinstrument lastElement = array[array.Length - 1];
+            Musicalinstrument firstElement = array[0];
+            Musicalinstrument centralElement = array[array.Length / 2];
 
             Console.WriteLine("Время поиска (среднее за 1000 замеров) в очереди 1:");
             Console.WriteLine($"Первый найден за {MeasureSearchTimeCollection1(firstElement)} тактов");
@@ -132,9 +133,10 @@ namespace Laba11
 
         public void Get1TimeQueue2()
         {
-            string firstElement = queue2.ToArray()[queue2.Count - 1];
-            string lastElement = queue2.ToArray()[0];
-            string centralElement = queue2.ToArray()[queue2.Count / 2];
+            string[] array = queue2.ToArray();
+            string lastElement = array[array.Length - 1];
+            string firstElement = array[0];
+            string centralElement = array[array.Length / 2];
 
             Console.WriteLine("Время поиска (среднее за 1000 замеров) в очереди 2:");
             Console.WriteLine($"Первый найден за {MeasureSearchTimeCollection2(firstElement)} тактов");
@@ -144,10 +146,10 @@ namespace Laba11
 
         public void Get1TimeSortedSet1()
         {
-            Musicalinstrument firstElement = sortedset1.Min;
-            Musicalinstrument lastElement = sortedset1.Max;
-            int count = sortedset1.Count;
-            Musicalinstrument centralElement = sortedset1.ElementAt(count / 2);
+            Musicalinstrument[] array = sortedset1.ToArray();
+            Musicalinstrument firstElement = array[0];
+            Musicalinstrument lastElement = array[array.Length - 1];
+            Musicalinstrument centralElement = array[array.Length / 2];
 
             Console.WriteLine("Время поиска (среднее за 1000 замеров) в сортированном множестве 1:");
             Console.WriteLine($"Первый найден за {MeasureSearchTimeCollection3(firstElement)} тактов");
@@ -157,10 +159,10 @@ namespace Laba11
 
         public void Get1TimeSortedSet2()
         {
-            string firstElement = sortedset2.Min;
-            string lastElement = sortedset2.Max;
-            int count = sortedset2.Count;
-            string centralElement = sortedset2.ElementAt(count / 2);
+            string[] array = sortedset2.ToArray();
+            string firstElement = array[0];
+            string lastElement = array[array.Length - 1];
+            string centralElement = array[array.Length / 2];
 
             Console.WriteLine("Время поиска (среднее за 1000 замеров) в сортированном множестве 2:");
             Console.WriteLine($"Первый найден за {MeasureSearchTimeCollection4(firstElement)} тактов");
